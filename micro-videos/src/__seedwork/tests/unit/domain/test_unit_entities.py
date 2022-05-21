@@ -53,6 +53,11 @@ class TestEntityUnit(unittest.TestCase):
             entity.to_dict()
         )
 
+    def test_set_method(self):
+        entity = StubEntity(prop1='value1', prop2='value2')
+        entity._set('prop1', 'changed')
+        self.assertEqual(entity.prop1, 'changed')
+
 
 @dataclass(frozen=True, kw_only=True)
 class StubAggregateRoot(Entity):
